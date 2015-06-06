@@ -43,35 +43,41 @@ def concatenate(handle, num_species, fo):
     """Scans the num_species_way fasta format alignment file downloaded from UCSC genome browser,
     and concatenate the protein fragment sequences."""
 
-    # #initialize a 2*num_species alignment_list filled with 0.
-    # alignment_list = [[0] * 2 for i in range(num_species)]
-    
-    #set a counter to track record index 
     i = 0
+    protein_list = []
     for record in SeqIO.parse(handle, 'fasta'):
         fasta_descript, fasta_seq = record.id, record.seq
         ucsc_species_id = '_'.join(fasta_descript.split('_')[0:2])
         # species_id = fasta_descript.split('_')[1]
-        fragment_index = fasta_descript.split('_')[2]
-        fragement_num = fasta_descript.split('_')[3]
-
-        previous_fragment_index = 0
-        #the alignment is in size of num_species repeatedly. Every 
-        #num_species entries with be the same speices.
+        fragment_index = int(fasta_descript.split('_')[2])
+        fragment_num = int(fasta_descript.split('_')[3])        
+        
         j = i % num_species
-        #concatenate the sequence if the current ucsc_species_id is identical
-        #with the one in list positioned at jth position.
-        if alignment_list[j][0] == ucsc_species_id:
-            if fragment_index < fragement_num:
-                alignment_list[j][1] += fasta_seq
-            if fragment_index == fragement_num:
-                alignment_list[j][1] += fasta_seq
-                print alignment_list[j][0], alignment_list[j][1]
-        #If the current entry is not associate with the jth in the list, then
-        #starts with a new one.
+        #initialize the protein_list as going through the first block of alignment.
+        if len(protein_list) != num_species:
+            fragment_counter = 1
+            protein_list.append([ucsc_species_id, fasta_seq, fragment_index, fragment_num, fragment_counter])
+        #update the list element after the first block of alignment
         else:
-            alignment_list[j] = [ucsc_species_id, fasta_seq]
+            #renew the list when new ucsc_species_id occurrs, and restart the concatenation.
+            if protein_list[j][0] != ucsc_species_id:
+                # print protein_list[j][0], protein_list[j][1]
+                fo.write("{0}\t{1}\t{2}\n".format(protein_list[j][0].split('_')[0], protein_list[j][0].split('_')[1], protein_list[j][1]))
+                #error check, to see the fragments total number adds up the same.
+                if protein_list[j][4] != protein_list[j][3]:
+                    print("Error code:1; Record id:{0}; UCSC Species ID:{1}; Fragment counter:{2}; Fragment number:{3}\n".format(str(i), ucsc_species_id, str(protein_list[j][4]), fragment_num))
+                fragment_counter = 1
+                protein_list[j] = ([ucsc_species_id, fasta_seq, fragment_index, fragment_num, fragment_counter])
+            #If the ucsc_species_id keeps the same, then keep the concatenation.
+            else:
+                protein_list[j][1] += fasta_seq
+                #increment the fragment counter
+                protein_list[j][4] += 1
+                #error check, to see the fragements indces are ordered.
+                if protein_list[j][4] != fragment_index:
+                    print("Error code:2; Record id:{0}; UCSC Species ID:{1}; Fragment counter:{2}; Fragment index:{3}\n".format(str(i), ucsc_species_id, str(protein_list[j][4]), fragment_index))
         i += 1
+
 
 
 if __name__ == "__main__":
