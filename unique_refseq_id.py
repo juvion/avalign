@@ -8,5 +8,5 @@ import sys
 alignment_fasta = sys.argv[1]
 fo = open(sys.argv[2], 'w')
 handle = open(alignment_fasta, 'rU')
-alignment_parser.unique_ids(handle, 100, fo, 'ucsc')
+alignment_parser.unique_ids(handle, 100, fo, 'refseq')
 fo.close()

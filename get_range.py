@@ -3,10 +3,9 @@ __author__ = "Xiaoju (Ju) Zhang"
 
 import alignment_parser
 import sys
+# import operator 
 
-
-alignment_fasta = sys.argv[1]
+csv_file = sys.argv[1]
 fo = open(sys.argv[2], 'w')
-handle = open(alignment_fasta, 'rU')
-alignment_parser.unique_ids(handle, 100, fo, 'ucsc')
+alignment_parser.get_range(csv_file, fo)
 fo.close()
