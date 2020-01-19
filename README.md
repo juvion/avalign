@@ -9,7 +9,7 @@ AVAlign - Worknote Build whole genome alignment
 Edited / Authored by Xiaoju (Ju) Zhang
 Updated: 8/11/2015
 
-###SECTION 1: **BACKGROUND KNOWLEDGES**  
+### SECTION 1: **BACKGROUND KNOWLEDGES**  
 
 **`Terms:`**
 `chains and nets`:
@@ -20,7 +20,7 @@ http://www.personal.psu.edu/zuz17/blogs/psu_life/2011/02/understand-ucsc-netchai
 http://genome.sph.umich.edu/wiki/LiftOver
 
 **`How to align?`**
-**Pages**
+**Pages**  
 [Vertebrate Multiz Alignment & Conservation (46 Species)](https://cgwb.nci.nih.gov/cgi-bin/hgTables?db=hg19&hgta_group=compGeno&hgta_track=cons46way&hgta_table=multiz46way&hgta_doSchema=describe+table+schema)
 [HowTo: Syntenic Net or Reciprocal Best][3]
 [3]: <http://genomewiki.ucsc.edu/index.php/HowTo:_Syntenic_Net_or_Reciprocal_Best>
@@ -142,7 +142,7 @@ http://genome.sph.umich.edu/wiki/LiftOver
 
 
 <br>
-###**SECTION 2: AVAlign - Pairwise alignment**  
+### **SECTION 2: AVAlign - Pairwise alignment**   
 **Dataset** 
 The following datasets for *C. elegans* and  *C. briggsae* are downloaded from UCSC genome browser website.
 
