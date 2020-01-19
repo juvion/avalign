@@ -1,4 +1,3 @@
-
 ---
 title: Variants in Alignment
 author: Xiaoju (Ju) Zhang
