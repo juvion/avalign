@@ -9,7 +9,7 @@ AVAlign - Worknote Build whole genome alignment
 Edited / Authored by Xiaoju (Ju) Zhang
 Updated: 8/11/2015
 
-###SECTION 1: **BACKGROUND KNOWLEDGES**
+###SECTION 1: **BACKGROUND KNOWLEDGES**  
 
 **`Terms:`**
 `chains and nets`:
@@ -142,7 +142,7 @@ http://genome.sph.umich.edu/wiki/LiftOver
 
 
 <br>
-###**SECTION 2: AVAlign - Pairwise alignment**
+###**SECTION 2: AVAlign - Pairwise alignment**  
 **Dataset** 
 The following datasets for *C. elegans* and  *C. briggsae* are downloaded from UCSC genome browser website.
 
@@ -270,7 +270,7 @@ $ make CLAPACKPATH=/home/xzhang/Tools/CLAPACK
 >```
 
 ______
-**- Optional Tools**
+**- Optional Tools**  
 Samtools library is required for UCSC genome browser.
 >**Samtools:** https://github.com/samtools/samtools
 >``` bash
@@ -299,7 +299,7 @@ sudo apt-get install mysql-server
 
 
 <br>
-**RESULTS:**
+**RESULTS:**  
 Some of the detailed command lines are skipped, which can be found in the original Approach 1 note or refer to original tutorial.
 1. Download dataset into `/sandbox/align_howto5.1/genome`,  `/sandbox/align_howto6.1/genome`. For this approach, the sequence files are in FASTA format. cb3 has two sets of FASTA files, random and regular.  Here all the .fa files are used, since alignment tools will take care of overlaps. And all of the FASTA files have been already masked, which allow us to skip Mask tandem repeat step.
 Explanation from [UCSC genome FAQ: chrN_random tables](http://genome.ucsc.edu/FAQ/FAQdownloads.html) about random FASTA files:
@@ -599,7 +599,7 @@ $ work_step_part2 ce10 cb3
 
 
 <br>
-#### **Build Pairwise Whole Genome Alignment Approach 2** 
+#### **Build Pairwise Whole Genome Alignment Approach 2**   
 --- adapt the scripted method on a local machine and use  for _C. elegans-ce10_ and  _C. briggsae- cb3_
 
 > **Date: 7/17/2015** 
@@ -609,13 +609,13 @@ align_howto6.2: test whole genome.
 align_ce10.caePb1: align whole genome for ce10 and cb3
 align_ce10.caePb1: align whole genome for ce10 and caePb1
 
-**OBJECTIVE:**
+**OBJECTIVE:**  
 Run the whole genome alignment method and tools, following the one shell script: [Whole genome alignment howto](http://genomewiki.ucsc.edu/images/9/93/RunLastzChain_sh.txt). Do a pairwise genome alignment of _C. elegans-ce10_ and  _C. briggsae- cb3_ 
 
-**MATERIAL AND METHODS:**
+**MATERIAL AND METHODS:**  
 Install mandatory tools: kenUtils, LASTZ, UCSC genome browser as instructed in approach 1. 
 
-**Packages for the alignment:**
+**Packages for the alignment:**  
 Perl scripts: (optional since KentUtils also includes these tools)
 `constructLiftFile.pl`
 `partitionSequence.pl`
@@ -763,7 +763,7 @@ echo "find ./chain -name \"*.chain\" | chainMergeSort -inputList=stdin | gzip -c
 
 
 ```
-**Notes of the adaptions:**
+**Notes of the adaptions:**  
 1. Comment out exit 255, we want the following code to be excuted.
 2. Change the matrix score locations, since they are saved in the workdir, change Q option to  `Q=human_chimp.v2.q` and `Q=HoxD55.q` , remove the paths in the original script.
 3. Change the target species to $1, and query speces to be  $2. `export TNAME=$1` and `export QNAME=$2`
@@ -949,15 +949,15 @@ $ align_part2.sh ce10 cb3
 
 
 <br>
-### SECTION 3: **Build Multiple Whole Genome Alignment** 
+### SECTION 3: **Build Multiple Whole Genome Alignment**   
 
-> **Date: 7/21/2015** 
+> **Date: 7/21/2015**   
 > **work log: sandbox/align_howto7.1** @usav1svBIOd1
 
 **OBJECTIVE:**
 Test and run the multiple whole genome alignment, following a collective of resources. 
 
-**MATERIAL AND METHODS:**
+**MATERIAL AND METHODS:**  
 Mandatory tools: multiz
 Following this discussion post: https://www.biostars.org/p/2882/
 >I have a set of 10-12 very closely related chromosome sequences (from different strains) aligned to a "single" reference chromosome. Now I need to generate multiple sequence alignment of these without afftecting individual alignments to the reference. All that I need is to add relative inserts at respective sequence positions, so that I get a global alignment with respect to reference.
@@ -998,14 +998,14 @@ Shift the reference in the alignment maf file. (ref:http://genomeview.org/manual
 	```
 
 <br>
-### SECTION 4: **Understand Parameters**
+### SECTION 4: **Understand Parameters**  
 There are two stages that need to set up parameters for optimal alignment. The first one is LASTZ aligning stage, and the second one is the chaining stage. Results alignment is sensitive to the parameters. To reference what parameters UCSC used for their multiple alignment dataset, go to these webpages. (http://genomewiki.ucsc.edu/index.php/Mm9_multiple_alignment)
 or (http://genomewiki.ucsc.edu/index.php/Hg19_100way_conservation_lastz_parameters)
 
 
 
 <br>
-### SECTION 5: **Test run for hg19-turTru2**
+### SECTION 5: **Test run for hg19-turTru2**  
 pairwise align human and dolphin
 
 Referencing to [Hg19_100way_Genome_size_statistics](http://genomewiki.ucsc.edu/index.php/Hg19_100way_Genome_size_statistics), hg19 chr counts is 93, and turTru2 is 240,901. The genomes are downloaded from UCSC database. Raw turTru2 fasta file is one single file, by using `faSplit` by name, the fasta file can be split into 240,901 pieces.
