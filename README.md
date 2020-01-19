@@ -191,7 +191,8 @@ Optional:
 	
 	>
 	
-	```text  
+```text    
+
 |-- genome
 |   |- ce10
 |   |   |-  *.fa
@@ -219,7 +220,8 @@ Optional:
 |   |-  chainParams.in
 |
 |-- multiAlign_ce10.cb3.caePb1
-	```
+
+```
 
 
 2. Go to aligning working directory  `align_ce10.cb3`, edit `lastzParams.in` and `chainParams.in`  setting up parameters. 
