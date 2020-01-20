@@ -12,7 +12,7 @@ Updated: 8/12/2015
 ### SECTION 1: **Install Tools**
 
 #### **MySQL Server:**
-Introduction: MySQL Server might be needed by UCSC genome Browser mirror, and it may also complains MySQL version incompatibility.  
+Introduction: MySQL Server is required by UCSC genome Browser mirror, and it may complain MySQL version incompatibility.  
 http://askubuntu.com/questions/489815/cannot-install-mysql-server-5-5-the-following-packages-have-unmet-dependicies
 http://www.rackspace.com/knowledge_center/article/installing-mysql-server-on-ubuntu  
 
