@@ -30,7 +30,7 @@ http://www.rackspace.com/knowledge_center/article/installing-mysql-server-on-ubu
 
 
 #### **kentUtils**: 
-Introduction: kentUtils is the key tool box which support the majority of the steps to perform pairwise alignment.
+Introduction: kentUtils is the key tool box which supports the majority of the steps to perform pairwise alignment.
 Download: https://github.com/ENCODE-DCC/kentUtils 
 1. Download the source code, decompress the package.
 2. Install required packages
@@ -49,7 +49,7 @@ Download: https://github.com/ENCODE-DCC/kentUtils
 	$ cd src/utils #make other utils
 	$ make
 	```
-4. If during the aligning steps, some command is missing, firstly make sure the tool is in the executable path, and then check kenUtils has it or not. It might not compiled by default, and you need to manually run makefile for that tool.
+4. If during the aligning steps, some command is missing, firstly make sure the tool is in the executable path, and then check kenUtils has it or not. It might not be compiled by default, and you need to manually run the makefile for it.
 
 
 #### **LASTZ**: 
